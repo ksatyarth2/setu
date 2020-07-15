@@ -5,183 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=PT+Sans&amp;display=swap">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"> -->
-
 <style>
-.granimate {
-  background-color: #2ecc71;
-
-  animation: hue 11s linear 0s infinite reverse;
+body{
+  margin:0;
+  color:#6a6f8c;
+   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTxWDF3ssTIhmffpTRfPWNFEHicf9lCNKzD0w&usqp=CAU");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  font:600 16px/18px 'Open Sans',sans-serif;
 }
-.granimate::before {
-  background: linear-gradient(105deg, rgba(255, 190,0, 0),##66ccff);
-  animation: hue 12s linear 1s infinite;
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+  width:100%;
+  margin:50px auto;
+  max-width:500px;
+  min-height:500px;
+  position:relative;
+  box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+  border-radius: 90px;
+   /*box-shadow: 0 20px 100px #000000;*/
 }
-
-@keyframes hue {
-  to {
-    filter: hue-rotate(1turn);
-  }
+.login-html{
+  width:100%;
+  height:100%;
+  position:absolute;
+  padding:90px 70px 50px 70px;
+  background:rgba(0,0,0,.9);
+  border-radius: 90px;
 }
-
-.full {
-  display: flex;
-
-
-  width: 100vw;
-  height: 100vh;
-  color: white;
-  font-family: system-ui;
-  font-size: 48px;
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  transform:rotateY(180deg);
+  backface-visibility:hidden;
+  transition:all .4s linear;
 }
-.full::before {
-  content: '';
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+  display:none;
 }
-.full::after {
-  
-  position: relative;
-  text-align: center;
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+  text-transform:uppercase;
 }
-
-body {
-  margin: 0;
+.login-html .tab{
+  font-size:22px;
+  margin-right:15px;
+  padding-bottom:5px;
+  margin:0 15px 10px 0;
+  display:inline-block;
+  border-bottom:2px solid transparent;
 }
-
-
-
-
-.form {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+  color:#fff;
+  border-color:#1161ee;
 }
-
-form {
-   padding: 70px;
-   border-radius: 103px;
-   box-shadow: 0 20px 100px #000000;
+.login-form{
+  min-height:345px;
+  position:relative;
+  perspective:1000px;
+  transform-style:preserve-3d;
 }
-
-form .username, form .email, form .password, form .sign-up {
-   width: 300px;
-   height: 60px;
-   margin-bottom: 15px;
-   border-radius: 4px;
-   overflow: hidden;
+.login-form .group{
+  margin-bottom:15px;
 }
-
-form .left {
-   float: left;
-   width: 8px;
-   height: 60px;
-   background-color: #40407a;
-   text-align: center;
-   line-height: 55px;
-   color: #f7f1e377;
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+  width:100%;
+  color:#fff;
+  display:block;
 }
-
-form .right {
-   float: left;
-   width: 250px;
-   height: 93px;
-}
-
-form .right input {
-   display: inline-block;
-   width: 100%;
-   height: 100%;
-   border: none;
-   background: #4747874d;
-   outline: none;
-   padding: 0 15px;
-   color: #d1ccc0;
-   font-size: 18px;
-   transition: background .2s linear;
+.login-form .group .input,
+.login-form .group .button{
+  border:none;
+  padding:15px 20px;
+  border-radius:25px;
+  background:rgba(255,255,255,.1);
 }
 
-form .right input:hover, 
-form .right input:focus {
-   background-color: #474787;
+.login-form .group .label{
+  color:#aaa;
+  font-size:12px;
+}
+.login-form .group .button{
+  background:#ee6d11;
+}
+.login-form .group label .icon{
+  width:15px;
+  height:15px;
+  border-radius:2px;
+  position:relative;
+  display:inline-block;
+  background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+  content:'';
+  width:10px;
+  height:2px;
+  background:#fff;
+  position:absolute;
+  transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+  left:3px;
+  width:5px;
+  bottom:6px;
+  transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+  top:6px;
+  right:0;
+  transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+  color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+  background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+  transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+  transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+  transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+  transform:rotate(0);
 }
 
-form input::placeholder {
-   color: #f7f1e344;
+.hr{
+  height:2px;
+  margin:60px 0 50px 0;
+  background:rgba(255,255,255,.2);
 }
-
-form .sign-up input {
-   width: 100%;
-   height: 100%;
-   background: #40407a66;
-   border: none;
-   outline: none;
-   cursor: pointer;
-   color: #d1ccc0;
-   font-size: 18px;
-   transition: background .2s linear;
+.foot-lnk{
+  text-align:center;
 }
+.message{
+margin:30px auto;
+font-size:37px;
+padding-left: 650px;
 
-form .sign-up input:hover {
-   background: #40407a;
+
 }
-
-.failed{
-  position: absolute;
-  top:30px;
-  padding-right:100px;
-  font-size:37px;
-
- left:314px;
- float:left;
-}
-
 
 </style>
+
 </head>
 <body>
-  
-<div class="full granimate">
-    </div>
-
-            <div class="failed">
-               <marquee>
-      {{message}}</marquee>
-  </div>
-<!--  <img src="https://i.ya-webdesign.com/images/vector-login-png-13.png" style="margin-bottom: 310px;width: 110px;height: 110px;">-->
-    <!--<div class="failed">
+  <div class="message">
+              
       {{message}}
-  </div>-->
-<div class="form">
+
+  </div>
+<div class="login-wrap">
+
+  <div class="login-html">
+
+
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+    <div class="login-form">
+
+      <div class="sign-in-htm">
+       
+
       <form action="{% url 'auth' %}" method="POST">
         {% csrf_token %}
-         <div class="username">
-            <div class="left">
-               
-            </div>
-            <div class="right">
-               <input type="text" placeholder="Aadhar ID" name="aadhar">
-            </div>
-         </div>
-
-   
-
-         <div class="password">
-            <div class="left">
-               
-            </div>
-            <div class="right">
-               <input type="text" placeholder="Phone No" name="phone">
-            </div>
-         </div>
-
-         <div class="sign-up">
-            <input type="submit" value="Sign In">
-         </div>
+        <div class="group">
+          <label for="user" class="label">aadhar no</label>
+          <input id="user" type="text" class="input">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">mobile no</label>
+          <input id="pass" type="tel" class="input" data-type="password">
+        </div>
+        <div class="group">
+          <input id="check" type="checkbox" class="check" checked>
+          <label for="check"><span class="icon"></span> Keep me Signed in</label>
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="Sign In">
+        </div>
       </form>
-
-   </div>
-
+       
+        
+      </div>
+      <div class="sign-up-htm">
+              <form action="{% url 'auth' %}" method="POST">
+        {% csrf_token %}
+        <div class="group">
+          <label for="user" class="label">aadhar no</label>
+          <input id="user" type="text" class="input">
+        </div>
+        <div class="group">
+          <label for="pass" class="label">mobile no</label>
+          <input id="pass" type="tel" class="input" data-type="password">
+        </div>
+        
+        <div class="hr"></div>
+         <div class="group">
+          <input type="submit" class="button" value="Sign up">
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
+
 </html> 
